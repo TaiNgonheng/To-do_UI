@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import {getAllTodos} from "../services/TodoService.jsx";
+import {completeTodo, deleteTodo, getAllTodos, inCompleteTodo} from "../services/TodoService.jsx";
+import {useNavigate} from "react-router-dom"
 
 const ListTodoComponent = () => {
     const [todo, setTodo] = useState([]);
 
+const navigator = useNavigate();
      useEffect(()=>{
         listodos();
      },[])
@@ -16,9 +18,42 @@ const ListTodoComponent = () => {
          })
     }
 
+    function addNewTodos(){
+         navigator('/addtodo');
+    }
+
+    function updateTodo(id){
+         console.log(id)
+        navigator(`/updatetodo/${id}`)
+    }
+
+    function removeTodo(id){
+         deleteTodo(id).then((response)=>{
+             listodos()
+         }).catch(error=>{
+             console.error(error)
+         })
+    }
+
+    function markCompleteTodo(id){
+         completeTodo(id).then((response)=>{
+             listodos()
+         }).catch(error=>{
+             console.error(error)
+         })
+    }
+    function remarkIncompleteTodo(id){
+         inCompleteTodo(id).then((response)=>{
+             listodos()
+         }).catch(error=>{
+             console.error(error)
+         })
+    }
+
     return (
-        <div className='container'>
-            <h2 className='text-center'>List Of 2-Do</h2>
+        <div className='container '>
+            {/*<h2 className='text-center'>To Do -LIST</h2>*/}
+            <button className='btn btn-primary mb-2' onClick={addNewTodos}>Add Task</button>
             <div>
             <table className='table table-bordered table-striped'>
                 <thead>
@@ -26,6 +61,7 @@ const ListTodoComponent = () => {
                         <th>Title</th>
                         <th>Description</th>
                         <th>Completed</th>
+                        <th >Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +70,13 @@ const ListTodoComponent = () => {
                         <tr key={todo.id}>
                             <td>{todo.title}</td>
                             <td>{todo.description}</td>
-                            <td>{todo.completed? 'Yes' : 'No'}</td>
+                            <td className='text-center'>{todo.completed ? 'Yes✅' : 'No❌'}</td>
+                            <td className=' p-2 m-2'>
+                                <button className='btn btn-info' onClick={()=> updateTodo(todo.id)}>Update</button>
+                                <button className='btn btn-danger ms-1' onClick={()=>removeTodo(todo.id)}>Delete</button>
+                                <button className='btn btn-primary ms-1' onClick={()=> markCompleteTodo(todo.id)}>Complete</button>
+                                <button className='btn btn-secondary ms-1' onClick={()=> remarkIncompleteTodo(todo.id)}>In complete</button>
+                            </td>
                         </tr>
                     )
                 }
