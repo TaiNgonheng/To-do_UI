@@ -1,8 +1,9 @@
 .footer{
     position: absolute;
+    /*bottom: 100%;*/
     bottom: 0;
     width: 100%;
-    height: 50px;
+    /*height: 50px;*/
     background-color: #605757;
     text-align: center;
     color: white;
@@ -11,14 +12,46 @@
 .header{
     position: absolute;
     padding: 2px;
-    top: 0;
+    top: 0px;
     width: 100%;
-    height: 50px;
+    height: 100px;
     background-color: #b9cbea;
     text-align: center;
     color: #3c2f67;
+    /*z-index: 1;*/
 }
 .container{
     position: relative;
-    top: 4rem;
+    top: 8rem;
+    z-index: 1;
+}
+.register{
+    /*position: relative;*/
+    margin-top: 20px;
+    right: 13rem;
+    max-width: 160px;
+    max-height: 50px;
+    border-radius: 10px;
+    background-color: #2886a8;
+    color: white;
+}
+.signIn{
+     /*position: relative;*/
+    margin-top: 20px;
+     right: 2rem;
+     max-width: 160px;
+     max-height: 50px;
+     border-radius: 10px;
+     background-color: #443f54;
+     color: white;
+ }
+.todo{
+    margin-top: 14px;
+    left: 8rem;
+    max-width: 160px;
+    max-height: 70px;
+    border-radius: 10px;
+    background-color: #eeda9b;
+    border: 1px solid gray;
+    /*color: #1d6969;*/
 }
