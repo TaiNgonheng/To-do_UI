@@ -12,7 +12,7 @@ const HeaderComponent = () => {
     return (
         <div>
             <header className='header'>
-                <h1 className='mt-xxl-4 fw-bold'>Task Management🗒🪅</h1>
+                <h1 className='mt-xxl-4 fw-bold'>Task Management🗒</h1>
                 {
                     isAuth &&
                     <button className='header todo'>
