@@ -16,7 +16,7 @@ const HeaderComponent = () => {
                 {
                     isAuth &&
                     <button className='header todo'>
-                        <NavLink to="/todos" className='nav-link '>To Do</NavLink>
+                        <NavLink to="/todos" className='nav-link '>ToDo</NavLink>
                     </button>
                 }
                 {
