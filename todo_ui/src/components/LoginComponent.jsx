@@ -21,7 +21,7 @@ const LoginComponent = () => {
             saveLoggedInUser(username,role);
 
             navigator("/todos")
-            window.location.reload();
+            window.location.reload();ch
         }).catch(error=>{
             console.error(error);
         })
